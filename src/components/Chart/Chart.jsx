@@ -1,10 +1,10 @@
 //  Functional Component
 import React from 'react';
 
-const Charts = () => {
+const Chart = () => {
     return(
         <h1>Charts</h1>
     )
 }
 
-export default Charts;
+export default Chart;

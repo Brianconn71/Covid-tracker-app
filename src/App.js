@@ -1,11 +1,25 @@
 // Class Based component
 import React from 'react';
 
+// Need index.js file in components folder to make these work
+import { Cards, Chart, CountryPicker } from './components'
+import styles from './App.module.css';
+import { fetchData } from './api';
+
 class App extends React.Component {
+
+    async componentDidMount() {
+        const data = await fetchData();
+
+        console.log(data);
+    }
+
     render () {
         return (
-            <div>
-                <h1>Hi</h1>
+            <div className={styles.container}>
+                <Cards />
+                <CountryPicker />
+                <Chart />
             </div>
         )
     }
