@@ -13,24 +13,22 @@ const Chart = () => {
             setDailyData(await fetchDailyData());
         }
 
-        console.log(dailyData);
-
         fetchAPI();
     });
 
     const lineChart = (
-        dailyData.length != 0
+        dailyData.length // can be left  as is without != 0
             ? (
                 <Line
                     data={{
-                        labels: dailyData(({ date }) => date),
+                        labels: dailyData.map(({ date }) => date),
                         datasets: [{
-                            data: dailyData(({ confirmed }) => confirmed),
+                            data: dailyData.map(({ confirmed }) => confirmed),
                             label: 'Infected',
                             borderColor: '#333fff',
                             fill: true,
                         }, {
-                            data: dailyData(({ deaths }) => deaths),
+                            data: dailyData.map(({ deaths }) => deaths),
                             label: 'Deaths',
                             borderColor: 'red',
                             backgroundColor: 'rgba(255,0,0,0.5)',
