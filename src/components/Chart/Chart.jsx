@@ -9,11 +9,13 @@ const Chart = () => {
     const [dailyData, setDailyData] = useState({});
 
     useEffect(() => {
+        let isMounted = true; 
         const fetchAPI = async () => {
-            setDailyData(await fetchDailyData());
+            if (isMounted) setDailyData(await fetchDailyData());
         }
 
         fetchAPI();
+        return () => { isMounted = false };
     });
 
     const lineChart = (
